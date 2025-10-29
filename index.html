@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayodya-web Developer</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -26,13 +28,13 @@
 
     </header>
 
-    <section id="about" class="about">
+    <section id="about" class="about fade-in">
         <h2>About Me</h2>
         <p>Hello! I'm Ayodya — a passionate web developer who loves creating clean, modern, and responsive websites.
             My goal is to help people and businesses shine online 🌟.</p>
     </section>
 
-    <section id="work" class="portfolio">
+    <section id="work" class="portfolio fade-in">
         <h2>My Projects</h2>
         <div class="project-container">
             <div class="project-card">
@@ -50,7 +52,7 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact fade-in">
         <h2>Contact Me</h2>
         <p>If you’d like to work together or just say hi, feel free to reach out 👋</p>
         <a href="mailto:gaminialuthgoda@gmail.com" class="btn">📧 Send Email</a>
@@ -62,6 +64,31 @@
         <p>© 2025 Ayodya | Built with ❤️ using HTML & CSS</p>
     </footer>
 
+
+
 </body>
+
+<script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('show');
+            appearOnScroll.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+</script>
+
+
 
 </html>
